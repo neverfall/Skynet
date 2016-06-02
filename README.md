@@ -4,6 +4,13 @@ This application was generated using JHipster, you can find documentation and he
 
 ## Development
 
+`First thing create a Data base in postgresql `
+`then go to `
+
+   ` /src/main/resources/config/application-dev.yml`
+   
+`And modify the datasource with your local Database information  `
+
 Before you can build this project, you must install and configure the following dependencies on your machine:
 
 1. [Node.js][]: We use Node to run a development web server and build the project.
