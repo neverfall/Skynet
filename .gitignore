@@ -132,3 +132,9 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
+.idea/
+etc/
+node/
+node_modules/
+src/main/webapp/bower_components/materialize/test/
+target/
