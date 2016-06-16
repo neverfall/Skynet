@@ -9,8 +9,12 @@
 
     function HomeController ($scope, Principal, LoginService, $state) {
         var vm = this;
+        $('.parallax').parallax();
 
-        $('.slider').slider({full_width: true});
+        $('.slider').slider({
+            full_width: true,
+            indicators: false
+        });
 
         vm.account = null;
         vm.isAuthenticated = null;
@@ -21,7 +25,6 @@
         });
 
         getAccount();
-
         function getAccount() {
             Principal.identity().then(function(account) {
                 vm.account = account;

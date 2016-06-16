@@ -6,19 +6,21 @@
     <title>skynet</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/Materialize/bin/materialize.css">
+    <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
-
     <link rel="stylesheet" href="content/css/main.css">
-    <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
-
+    <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <!-- endbuild -->
 </head>
 <body ng-app="skynetApp">
@@ -27,12 +29,11 @@
     <![endif]-->
     <div ui-view="navbar" ng-cloak></div>
     <div >
-        <div class="well blue-grey darken-2" ui-view="content">
+        <div class="blue-grey darken-2" ui-view="content">
             <!-- Angular views -->
         </div>
+        <div ui-view="footer" ng-cloak ng-cloak>
 
-        <div class="footer center-align" ng-cloak>
-            <p>Pernix Solutions 2016 &copy;</p>
         </div>
     </div>
 
@@ -51,7 +52,7 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/messageformat/messageformat.js"></script>
-    <script src="bower_components/Materialize/bin/materialize.js"></script>
+    <script src="bower_components/materialize/bin/materialize.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -88,9 +89,16 @@
     <script src="app/services/auth/account.service.js"></script>
     <script src="app/layouts/navbar/navbar.controller.js"></script>
     <script src="app/layouts/navbar/active-link.directive.js"></script>
+    <script src="app/layouts/footer/footer.controller.js"></script>
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
+    <script src="app/entities/usuario/usuario-dialog.controller.js"></script>
+    <script src="app/entities/usuario/usuario-detail.controller.js"></script>
+    <script src="app/entities/usuario/usuario-delete-dialog.controller.js"></script>
+    <script src="app/entities/usuario/usuario.state.js"></script>
+    <script src="app/entities/usuario/usuario.service.js"></script>
+    <script src="app/entities/usuario/usuario.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
@@ -166,6 +174,5 @@
     <script src="app/account/account.state.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
-
 </body>
 </html>
