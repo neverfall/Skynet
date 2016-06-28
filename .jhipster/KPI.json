@@ -1,0 +1,61 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "collaborator",
+      "otherEntityName": "collaborator",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "duration",
+      "otherEntityName": "duration",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "kPI"
+    },
+    {
+      "relationshipId": 3,
+      "relationshipName": "productivity",
+      "otherEntityName": "productivity",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "kPI"
+    },
+    {
+      "relationshipId": 4,
+      "relationshipName": "followUp",
+      "otherEntityName": "followUp",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "kPI"
+    },
+    {
+      "relationshipId": 5,
+      "relationshipName": "customerSatisfactionNPS",
+      "otherEntityName": "customerSatisfactionNPS",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "kPI"
+    },
+    {
+      "relationshipId": 6,
+      "relationshipName": "customerSatisfactionGrade",
+      "otherEntityName": "customerSatisfactionGrade",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "kPI"
+    }
+  ],
+  "fields": [],
+  "changelogDate": "20160628182857",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no"
+}

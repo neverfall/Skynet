@@ -1,0 +1,77 @@
+entity Collaborator {
+    name String required,
+    lastName String,
+    email String required,
+    apprentice Boolean required
+}
+
+entity KPI {
+
+}
+
+entity Duration {
+    value Integer,
+    compliance Integer
+}
+
+entity Productivity {
+    value Integer,
+    compliance Integer
+}
+
+entity FollowUp {
+    value Integer,
+    compliance Integer
+}
+
+entity CustomerSatisfactionNPS {
+    value Integer,
+    compliance Integer
+}
+
+entity CustomerSatisfactionGrade {
+    value Integer,
+    compliance Integer
+}
+
+entity Gamification {
+    yearlyScore Integer,
+    periodScore Integer
+}
+
+entity Category {
+    name String,
+    value Integer
+}
+
+relationship OneToMany {
+    Collaborator{kpi} to KPI
+}
+
+relationship OneToOne {
+    KPI{duration} to Duration    
+}
+
+relationship OneToOne {
+    KPI{productivity} to Productivity
+}
+
+relationship OneToOne {
+    KPI{followUp} to FollowUp
+}
+
+relationship OneToOne {
+    KPI{customerSatisfactionNPS} to CustomerSatisfactionNPS
+}
+
+relationship OneToOne {
+    KPI{customerSatisfactionGrade} to CustomerSatisfactionGrade
+}
+
+relationship OneToOne {
+    Collaborator{gamification} to Gamification
+}
+
+relationship OneToMany {
+    Gamification{category} to Category
+}

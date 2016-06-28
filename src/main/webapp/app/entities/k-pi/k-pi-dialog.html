@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myKPILabel">Create or edit a KPI</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.kPI.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.kPI.id" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="field_collaborator">Collaborator</label>
+            <select class="form-control" id="field_collaborator" name="collaborator" ng-model="vm.kPI.collaborator" ng-options="collaborator as collaborator.id for collaborator in vm.collaborators track by collaborator.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_duration">Duration</label>
+            <select class="form-control" id="field_duration" name="duration" ng-model="vm.kPI.duration" ng-options="duration as duration.id for duration in vm.durations | orderBy:'id' track by duration.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_productivity">Productivity</label>
+            <select class="form-control" id="field_productivity" name="productivity" ng-model="vm.kPI.productivity" ng-options="productivity as productivity.id for productivity in vm.productivities | orderBy:'id' track by productivity.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_followUp">Follow Up</label>
+            <select class="form-control" id="field_followUp" name="followUp" ng-model="vm.kPI.followUp" ng-options="followUp as followUp.id for followUp in vm.followups | orderBy:'id' track by followUp.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_customerSatisfactionNPS">Customer Satisfaction NPS</label>
+            <select class="form-control" id="field_customerSatisfactionNPS" name="customerSatisfactionNPS" ng-model="vm.kPI.customerSatisfactionNPS" ng-options="customerSatisfactionNPS as customerSatisfactionNPS.id for customerSatisfactionNPS in vm.customersatisfactionnps | orderBy:'id' track by customerSatisfactionNPS.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_customerSatisfactionGrade">Customer Satisfaction Grade</label>
+            <select class="form-control" id="field_customerSatisfactionGrade" name="customerSatisfactionGrade" ng-model="vm.kPI.customerSatisfactionGrade" ng-options="customerSatisfactionGrade as customerSatisfactionGrade.id for customerSatisfactionGrade in vm.customersatisfactiongrades | orderBy:'id' track by customerSatisfactionGrade.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

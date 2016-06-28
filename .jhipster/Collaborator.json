@@ -1,0 +1,55 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "kpi",
+      "otherEntityName": "kPI",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "collaborator"
+    },
+    {
+      "relationshipId": 2,
+      "relationshipName": "gamification",
+      "otherEntityName": "gamification",
+      "relationshipType": "one-to-one",
+      "otherEntityField": "id",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "collaborator"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "apprentice",
+      "fieldType": "Boolean",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "changelogDate": "20160628182856",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no"
+}
