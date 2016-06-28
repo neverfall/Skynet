@@ -20,8 +20,8 @@ spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/postgres
         name:
-        username: skynet
-        password: skynet
+        username: postgres
+        password: postgres
     jpa:
         database-platform: com.pernix_central.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL

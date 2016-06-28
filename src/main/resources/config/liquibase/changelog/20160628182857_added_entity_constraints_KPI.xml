@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity KPI.
+    -->
+    <changeSet id="20160628182857-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="collaborator_id"
+                                 baseTableName="kpi"
+                                 constraintName="fk_kpi_collaborator_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="collaborator"/>
+
+        <addForeignKeyConstraint baseColumnNames="duration_id"
+                                 baseTableName="kpi"
+                                 constraintName="fk_kpi_duration_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="duration"/>
+
+        <addForeignKeyConstraint baseColumnNames="productivity_id"
+                                 baseTableName="kpi"
+                                 constraintName="fk_kpi_productivity_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="productivity"/>
+
+        <addForeignKeyConstraint baseColumnNames="follow_up_id"
+                                 baseTableName="kpi"
+                                 constraintName="fk_kpi_followup_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="follow_up"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_satisfaction_nps_id"
+                                 baseTableName="kpi"
+                                 constraintName="fk_kpi_customersatisfactionnps_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer_satisfaction_nps"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_satisfaction_grade_id"
+                                 baseTableName="kpi"
+                                 constraintName="fk_kpi_customersatisfactiongrade_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer_satisfaction_grade"/>
+
+    </changeSet>
+</databaseChangeLog>

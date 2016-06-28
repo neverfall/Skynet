@@ -1,0 +1,27 @@
+{
+  "relationships": [
+    {
+      "relationshipId": 1,
+      "relationshipName": "gamification",
+      "otherEntityName": "gamification",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "value",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20160628182804",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no"
+}

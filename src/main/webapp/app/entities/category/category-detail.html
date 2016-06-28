@@ -1,0 +1,26 @@
+
+<div>
+    <h2><span>Category</span> {{vm.category.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.category.name}}</span>
+        </dd>
+        <dt><span>Value</span></dt>
+        <dd>
+            <span>{{vm.category.value}}</span>
+        </dd>
+        <dt><span>Gamification</span></dt>
+        <dd>
+            <a ui-sref="gamification-detail({id:vm.category.gamification.id})">{{vm.category.gamification.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
