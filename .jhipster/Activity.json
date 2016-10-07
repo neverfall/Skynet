@@ -1,0 +1,32 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "coordinator",
+            "otherEntityName": "participant",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "points",
+            "fieldType": "Integer",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20161006192019",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "activity",
+    "pagination": "no"
+}

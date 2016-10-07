@@ -19,9 +19,9 @@ spring:
             enabled: false # we use gulp + BrowserSync for livereload
     datasource:
         url: jdbc:postgresql://localhost:5432/postgres
-        name:
+        name: Skynet
         username: postgres
-        password: postgres
+        password: hola
     jpa:
         database-platform: com.pernix_central.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
