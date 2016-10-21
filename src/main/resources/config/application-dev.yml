@@ -1,7 +1,6 @@
 # ===================================================================
 # Spring Boot configuration for the "dev" profile.
 #
-# This configuration overrides the application.yml file.
 # ===================================================================
 
 # ===================================================================
@@ -18,8 +17,8 @@ spring:
         livereload:
             enabled: false # we use gulp + BrowserSync for livereload
     datasource:
-        url: jdbc:postgresql://localhost:5432/postgres
-        name: Skynet
+        url: jdbc:postgresql://localhost:5432/Gamification
+        name: Gamification
         username: postgres
         password: hola
     jpa:

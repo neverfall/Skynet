@@ -4,6 +4,7 @@
             "relationshipName": "employee",
             "otherEntityName": "employee",
             "relationshipType": "many-to-one",
+            "relationshipValidateRules": [],
             "otherEntityField": "name"
         },
         {

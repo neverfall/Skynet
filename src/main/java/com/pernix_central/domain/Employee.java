@@ -30,13 +30,14 @@ public class Employee implements Serializable {
     @Column(name = "role")
     private String role;
 
+    @Column(name = "active")
+    private Boolean active;
+
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) {this.id = id; }
 
     public String getName() {
         return name;
@@ -60,6 +61,14 @@ public class Employee implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Boolean isActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @Override
@@ -89,6 +98,7 @@ public class Employee implements Serializable {
             ", name='" + name + "'" +
             ", email='" + email + "'" +
             ", role='" + role + "'" +
+            ", active='" + active + "'" +
             '}';
     }
 }

@@ -15,6 +15,10 @@
             "fieldName": "role",
             "fieldType": "String",
             "fieldValidateRules": []
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20161011184239",

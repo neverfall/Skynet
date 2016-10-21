@@ -48,6 +48,9 @@ public class EmployeeResourceIntTest {
     private static final String DEFAULT_ROLE = "AAAAA";
     private static final String UPDATED_ROLE = "BBBBB";
 
+    private static final Boolean DEFAULT_ACTIVE = false;
+    private static final Boolean UPDATED_ACTIVE = true;
+
     @Inject
     private EmployeeRepository employeeRepository;
 
@@ -77,6 +80,7 @@ public class EmployeeResourceIntTest {
         employee.setName(DEFAULT_NAME);
         employee.setEmail(DEFAULT_EMAIL);
         employee.setRole(DEFAULT_ROLE);
+        employee.setActive(DEFAULT_ACTIVE);
     }
 
     @Test
@@ -98,6 +102,7 @@ public class EmployeeResourceIntTest {
         assertThat(testEmployee.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testEmployee.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testEmployee.getRole()).isEqualTo(DEFAULT_ROLE);
+        assertThat(testEmployee.isActive()).isEqualTo(DEFAULT_ACTIVE);
     }
 
     @Test
@@ -113,7 +118,8 @@ public class EmployeeResourceIntTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(employee.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
                 .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-                .andExpect(jsonPath("$.[*].role").value(hasItem(DEFAULT_ROLE.toString())));
+                .andExpect(jsonPath("$.[*].role").value(hasItem(DEFAULT_ROLE.toString())))
+                .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE.booleanValue())));
     }
 
     @Test
@@ -129,7 +135,8 @@ public class EmployeeResourceIntTest {
             .andExpect(jsonPath("$.id").value(employee.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.role").value(DEFAULT_ROLE.toString()));
+            .andExpect(jsonPath("$.role").value(DEFAULT_ROLE.toString()))
+            .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE.booleanValue()));
     }
 
     @Test
@@ -153,6 +160,7 @@ public class EmployeeResourceIntTest {
         updatedEmployee.setName(UPDATED_NAME);
         updatedEmployee.setEmail(UPDATED_EMAIL);
         updatedEmployee.setRole(UPDATED_ROLE);
+        updatedEmployee.setActive(UPDATED_ACTIVE);
 
         restEmployeeMockMvc.perform(put("/api/employees")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -166,6 +174,7 @@ public class EmployeeResourceIntTest {
         assertThat(testEmployee.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testEmployee.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testEmployee.getRole()).isEqualTo(UPDATED_ROLE);
+        assertThat(testEmployee.isActive()).isEqualTo(UPDATED_ACTIVE);
     }
 
     @Test

@@ -13,11 +13,13 @@
         vm.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
+        var onDeleteSuccess = function () {
+            $uibModalInstance.close(true);
+        };
+
         vm.confirmDelete = function (id) {
-            Employee.delete({id: id},
-                function () {
-                    $uibModalInstance.close(true);
-                });
+            vm.employee.active = false;
+            Employee.update(vm.employee, onDeleteSuccess);
         };
     }
 })();

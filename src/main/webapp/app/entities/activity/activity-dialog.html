@@ -34,7 +34,7 @@
 
         <div class="form-group">
             <label for="field_coordinator">Coordinator</label>
-            <select class="form-control" id="field_coordinator" name="coordinator" ng-model="vm.activity.coordinator" ng-options="employee as employee.name for employee in vm.employees track by employee.id">
+            <select class="form-control" id="field_coordinator" name="coordinator" ng-model="vm.activity.coordinator" ng-options="employee as employee.name for employee in (vm.employees | filter:{ active : true }) track by employee.id" >
                 <option value=""></option>
             </select>
         </div>

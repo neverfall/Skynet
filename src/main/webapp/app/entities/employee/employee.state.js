@@ -65,6 +65,7 @@
                                 name: null,
                                 email: null,
                                 role: null,
+                                active: null,
                                 id: null
                             };
                         }

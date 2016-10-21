@@ -25,8 +25,9 @@
                     <th></th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr ng-repeat="employee in vm.employees track by employee.id">
+                <tr ng-repeat="employee in vm.employees track by employee.id" ng-if="employee.active">
                     <td><a ui-sref="employee-detail({id:employee.id})">{{employee.id}}</a></td>
                     <td>{{employee.name}}</td>
                     <td>{{employee.email}}</td>

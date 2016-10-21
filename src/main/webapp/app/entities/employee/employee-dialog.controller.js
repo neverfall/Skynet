@@ -30,6 +30,7 @@
             if (vm.employee.id !== null) {
                 Employee.update(vm.employee, onSaveSuccess, onSaveError);
             } else {
+                vm.employee.active = true;
                 Employee.save(vm.employee, onSaveSuccess, onSaveError);
             }
         };
