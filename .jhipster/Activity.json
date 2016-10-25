@@ -2,9 +2,9 @@
     "relationships": [
         {
             "relationshipName": "coordinator",
-            "otherEntityName": "employee",
+            "otherEntityName": "user",
             "relationshipType": "many-to-one",
-            "otherEntityField": "name"
+            "otherEntityField": "firstName"
         }
     ],
     "fields": [

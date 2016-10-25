@@ -26,10 +26,10 @@ import java.util.Optional;
 public class ActivityResource {
 
     private final Logger log = LoggerFactory.getLogger(ActivityResource.class);
-
+        
     @Inject
     private ActivityRepository activityRepository;
-
+    
     /**
      * POST  /activities : Create a new activity.
      *

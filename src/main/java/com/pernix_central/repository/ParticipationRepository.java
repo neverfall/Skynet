@@ -12,4 +12,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface ParticipationRepository extends JpaRepository<Participation,Long> {
 
+    @Query("select participation from Participation participation where participation.user.login = ?#{principal.username}")
+    List<Participation> findByUserIsCurrentUser();
+
 }

@@ -1,17 +1,16 @@
 {
     "relationships": [
         {
-            "relationshipName": "employee",
-            "otherEntityName": "employee",
-            "relationshipType": "many-to-one",
-            "relationshipValidateRules": [],
-            "otherEntityField": "name"
-        },
-        {
             "relationshipName": "activity",
             "otherEntityName": "activity",
             "relationshipType": "many-to-one",
             "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "firstName"
         }
     ],
     "fields": [

@@ -25,7 +25,7 @@
 
         vm.loadAll();
 
-        
+
 
         Principal.identity().then(function(account) {
             vm.currentAccount = account;

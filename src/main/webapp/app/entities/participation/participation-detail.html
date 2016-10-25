@@ -8,13 +8,13 @@
         <dd>
             <span>{{vm.participation.date | date:'mediumDate'}}</span>
         </dd>
-        <dt><span>Employee</span></dt>
-        <dd>
-            <a ui-sref="employee-detail({id:vm.participation.employee.id})">{{vm.participation.employee.name}}</a>
-        </dd>
         <dt><span>Activity</span></dt>
         <dd>
             <a ui-sref="activity-detail({id:vm.participation.activity.id})">{{vm.participation.activity.name}}</a>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.participation.user.firstName}}
         </dd>
     </dl>
 

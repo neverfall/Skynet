@@ -26,10 +26,10 @@ public class Participation implements Serializable {
     private LocalDate date;
 
     @ManyToOne
-    private Employee employee;
+    private Activity activity;
 
     @ManyToOne
-    private Activity activity;
+    private User user;
 
     public Long getId() {
         return id;
@@ -47,20 +47,20 @@ public class Participation implements Serializable {
         this.date = date;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public Activity getActivity() {
         return activity;
     }
 
     public void setActivity(Activity activity) {
         this.activity = activity;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

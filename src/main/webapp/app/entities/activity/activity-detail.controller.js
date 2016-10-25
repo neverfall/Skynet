@@ -5,9 +5,9 @@
         .module('skynetApp')
         .controller('ActivityDetailController', ActivityDetailController);
 
-    ActivityDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Activity', 'Employee'];
+    ActivityDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Activity', 'User'];
 
-    function ActivityDetailController($scope, $rootScope, $stateParams, entity, Activity, Employee) {
+    function ActivityDetailController($scope, $rootScope, $stateParams, entity, Activity, User) {
         var vm = this;
         vm.activity = entity;
         

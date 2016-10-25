@@ -12,4 +12,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface ActivityRepository extends JpaRepository<Activity,Long> {
 
+    @Query("select activity from Activity activity where activity.coordinator.login = ?#{principal.username}")
+    List<Activity> findByCoordinatorIsCurrentUser();
+
 }

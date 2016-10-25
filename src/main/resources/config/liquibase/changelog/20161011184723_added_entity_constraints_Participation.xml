@@ -7,24 +7,18 @@
         Added the constraints for entity Participation.
     -->
     <changeSet id="20161011184723-2" author="jhipster">
-
-        <addForeignKeyConstraint baseColumnNames="employee_id"
-                                 baseTableName="participation"
-                                 constraintName="fk_participation_employee_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="employee"/>
-
+        
         <addForeignKeyConstraint baseColumnNames="activity_id"
                                  baseTableName="participation"
                                  constraintName="fk_participation_activity_id"
                                  referencedColumnNames="id"
                                  referencedTableName="activity"/>
 
-        <addDefaultValue catalogName="Gamification"
-                         columnDataType="boolean"
-                         columnName="active"
-                         defaultValueBoolean="true"
-                         tableName="employee"/>
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="participation"
+                                 constraintName="fk_participation_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
 
     </changeSet>
 </databaseChangeLog>

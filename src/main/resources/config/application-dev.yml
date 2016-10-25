@@ -17,8 +17,8 @@ spring:
         livereload:
             enabled: false # we use gulp + BrowserSync for livereload
     datasource:
-        url: jdbc:postgresql://localhost:5432/Gamification
-        name: Gamification
+        url: jdbc:postgresql://localhost:5432/Skynet
+        name: Skynet
         username: postgres
         password: hola
     jpa:

@@ -31,7 +31,7 @@ public class Activity implements Serializable {
     private Integer points;
 
     @ManyToOne
-    private Employee coordinator;
+    private User coordinator;
 
     public Long getId() {
         return id;
@@ -65,12 +65,12 @@ public class Activity implements Serializable {
         this.points = points;
     }
 
-    public Employee getCoordinator() {
+    public User getCoordinator() {
         return coordinator;
     }
 
-    public void setCoordinator(Employee employee) {
-        this.coordinator = employee;
+    public void setCoordinator(User user) {
+        this.coordinator = user;
     }
 
     @Override
