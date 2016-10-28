@@ -11,7 +11,8 @@
         var vm = this;
         vm.activity = entity;
         vm.users = User.query();
-
+        vm.authorities = ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_COORDINATOR'];
+        vm.authorizedUser = 'ROLE_COORDINATOR';
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -38,5 +39,6 @@
         vm.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
+
     }
 })();

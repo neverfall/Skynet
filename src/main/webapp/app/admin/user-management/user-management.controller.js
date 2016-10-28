@@ -10,7 +10,7 @@
     function UserManagementController(Principal, User, ParseLinks, paginationConstants) {
         var vm = this;
 
-        vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        vm.authorities = ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_COORDINATOR'];
         vm.clear = clear;
         vm.currentAccount = null;
         vm.languages = null;
@@ -36,7 +36,6 @@
             User.query({page: vm.page - 1, size: paginationConstants.itemsPerPage}, function (result, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
-
                 //hide anonymous user from user management: it's a required user for Spring Security
                 for(var i in result) {
                     if(result[i]['login'] === 'anonymoususer') {

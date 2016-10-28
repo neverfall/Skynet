@@ -5,13 +5,19 @@
         .module('skynetApp')
         .controller('ParticipationDialogController', ParticipationDialogController);
 
-    ParticipationDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Participation', 'Activity', 'User'];
+    ParticipationDialogController.$inject = ['Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Participation', 'Activity', 'User'];
 
-    function ParticipationDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Participation, Activity, User) {
+    function ParticipationDialogController (Principal, $timeout, $scope, $stateParams, $uibModalInstance, entity, Participation, Activity, User) {
         var vm = this;
         vm.participation = entity;
         vm.activities = Activity.query();
         vm.users = User.query();
+        vm.currentAccount = null;
+
+        Principal.identity().then(function(account) {
+            vm.currentAccount = account;
+        });
+
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

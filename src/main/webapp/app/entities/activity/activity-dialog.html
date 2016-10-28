@@ -31,10 +31,9 @@
                     ng-model="vm.activity.points"
                      />
         </div>
-
         <div class="form-group">
             <label for="field_coordinator">Coordinator</label>
-            <select class="form-control" id="field_coordinator" name="coordinator" ng-model="vm.activity.coordinator" ng-options="user as user.firstName for user in vm.users track by user.id">
+            <select class="form-control" id="field_coordinator" name="coordinator" ng-model="vm.activity.coordinator" ng-options="user as user.firstName for user in vm.users | filter: vm.authorizedUser ">
                 <option value=""></option>
             </select>
         </div>
