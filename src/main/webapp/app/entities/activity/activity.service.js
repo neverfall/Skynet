@@ -20,6 +20,17 @@
                     return data;
                 }
             },
+            'getScore': {
+                 url: 'api/gamification' ,
+                 method: 'GET',
+                 transformResponse: function (data) {
+                     if (data) {
+                         data = angular.fromJson(data);
+                     }
+                     return data;
+                 },
+                 isArray: true
+             },
             'update': { method:'PUT' }
         });
     }

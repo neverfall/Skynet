@@ -1,4 +1,26 @@
 <div>
-
-    <h2> Gamification</h2>
+    <h2> Gamification leaderboard</h2>
+    <br>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th></th>
+                <th><span>Name</span></th>
+                <th><span>Last Name</span></th>
+                <th><span>Points</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="score in vm.scores ">
+                <td>{{$index + 1}}</td>
+                <td>{{score.first_name}}</td>
+                <td>{{score.last_name}}</td>
+                <td>{{score.points}}</td>
+                <td class="text-right">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

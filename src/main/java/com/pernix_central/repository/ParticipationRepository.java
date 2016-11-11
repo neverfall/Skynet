@@ -3,6 +3,8 @@ package com.pernix_central.repository;
 import com.pernix_central.domain.Participation;
 
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
+
 
 import java.util.List;
 

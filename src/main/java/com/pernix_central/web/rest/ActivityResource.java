@@ -2,6 +2,8 @@ package com.pernix_central.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.pernix_central.domain.Activity;
+import com.pernix_central.domain.Participation;
+import com.pernix_central.domain.ScoreboardAnswer;
 import com.pernix_central.repository.ActivityRepository;
 import com.pernix_central.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -26,10 +28,10 @@ import java.util.Optional;
 public class ActivityResource {
 
     private final Logger log = LoggerFactory.getLogger(ActivityResource.class);
-        
+
     @Inject
     private ActivityRepository activityRepository;
-    
+
     /**
      * POST  /activities : Create a new activity.
      *
@@ -96,7 +98,7 @@ public class ActivityResource {
      *
      * @param id the id of the activity to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the activity, or with status 404 (Not Found)
-     */
+    */
     @RequestMapping(value = "/activities/{id}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -109,6 +111,21 @@ public class ActivityResource {
                 result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * GET  /activities/:id : get the "id" activity.
+     *
+     * @return the ResponseEntity with status 200 (OK) and with body the activity, or with status 404 (Not Found)
+     */
+    @RequestMapping(value = "/gamification",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<ScoreboardAnswer> getScoreboard() {
+        log.debug("REST request to get Scoreboard");
+        List<ScoreboardAnswer> scoreboard = activityRepository.getScore();
+        return scoreboard;
     }
 
     /**

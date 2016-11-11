@@ -30,7 +30,7 @@
             parent: 'entity',
             url: '/activity/{id}',
             data: {
-                authorities: ['ROLE_ADMIN'],
+                authorities: ['ROLE_ADMIN', 'ROLE_COORDINATOR'],
                 pageTitle: 'Activity'
             },
             views: {

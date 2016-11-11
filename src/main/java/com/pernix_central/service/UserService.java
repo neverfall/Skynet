@@ -174,6 +174,14 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
+    public Optional<User> getOneByEmail(String email) {
+        return userRepository.findOneByEmail(email).map(u -> {
+            u.getAuthorities().size();
+            return u;
+        });
+    }
+
+    @Transactional(readOnly = true)
     public User getUserWithAuthorities(Long id) {
         User user = userRepository.findOne(id);
         user.getAuthorities().size(); // eagerly load the association

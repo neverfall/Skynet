@@ -3,12 +3,19 @@
 
     angular
         .module('skynetApp')
-        .controller('JhiConfigurationController', JhiConfigurationController);
+        .controller('GamificationController', GamificationController);
 
-    GamificationController.$inject = ['JhiConfigurationService'];
+    GamificationController.$inject = ['$scope', 'Activity'];
 
-    function GamificationController () {
+    function GamificationController ($scope, Activity) {
         var vm = this;
-
+        vm.scores = [];
+        vm.load = function() {
+            Activity.getScore(function(result) {
+                vm.scores = result;
+                console.log(vm.scores);
+            });
+        };
+        vm.load();
     }
 })();
