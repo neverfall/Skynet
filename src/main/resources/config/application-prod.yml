@@ -18,10 +18,10 @@ spring:
         livereload:
             enabled: false
     datasource:
-        url: jdbc:postgresql://localhost:5432/skynet
-        name:
-        username: skynet
-        password:
+        url: jdbc:postgresql://localhost:5432/Gamification
+        name: Gamification
+        username: postgres
+        password: hola
     jpa:
         database-platform: com.pernix_central.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL

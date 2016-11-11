@@ -2548,6 +2548,13 @@ output {
   line-height: 1.42857143;
   color: #555;
 }
+
+.checkbox-control{
+  position: static !important;
+  opacity: 1 !important;
+
+}
+
 .form-control {
   display: block;
   width: 100%;

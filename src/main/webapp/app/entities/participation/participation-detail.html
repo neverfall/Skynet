@@ -1,0 +1,26 @@
+
+<div>
+    <h2><span>Participation</span> {{vm.participation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Date</span></dt>
+        <dd>
+            <span>{{vm.participation.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Activity</span></dt>
+        <dd>
+            <a ui-sref="activity-detail({id:vm.participation.activity.id})">{{vm.participation.activity.name}}</a>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.participation.user.firstName}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

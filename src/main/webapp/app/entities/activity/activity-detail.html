@@ -1,0 +1,30 @@
+
+<div>
+    <h2><span>Activity</span> {{vm.activity.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.activity.name}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.activity.description}}</span>
+        </dd>
+        <dt><span>Points</span></dt>
+        <dd>
+            <span>{{vm.activity.points}}</span>
+        </dd>
+        <dt><span>Coordinator</span></dt>
+        <dd>
+            {{vm.activity.coordinator.firstName}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

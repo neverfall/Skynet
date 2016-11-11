@@ -1,7 +1,6 @@
 # ===================================================================
 # Spring Boot configuration for the "dev" profile.
 #
-# This configuration overrides the application.yml file.
 # ===================================================================
 
 # ===================================================================
@@ -18,10 +17,10 @@ spring:
         livereload:
             enabled: false # we use gulp + BrowserSync for livereload
     datasource:
-        url: jdbc:postgresql://localhost:5432/postgres
-        name:
+        url: jdbc:postgresql://localhost:5432/Skynet
+        name: Skynet
         username: postgres
-        password: postgres
+        password: hola
     jpa:
         database-platform: com.pernix_central.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
