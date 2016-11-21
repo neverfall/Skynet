@@ -26,13 +26,13 @@
 
         <div class="form-group">
             <label for="field_activity">Activity</label>
-            <select class="form-control" id="field_activity" name="activity" ng-model="vm.participation.activity" ng-options="activity as activity.name for activity in vm.activities | filter: vm.currentAccount.email ">
+            <select class="form-control" id="field_activity" name="activity" ng-model="vm.participation.activity" ng-options="activity as activity.name for activity in vm.myActivities ">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.participation.user" ng-options="user as user.firstName for user in vm.users | filter: '!ROLE_ADMIN'">
+            <label for="field_user">Users</label>
+            <select class="form-control" id="field_user" name="user" multiple ng-model="vm.pickedUsers" ng-options="user as user.firstName for user in vm.users | filter: '!ROLE_ADMIN'">
                 <option value=""></option>
             </select>
         </div>

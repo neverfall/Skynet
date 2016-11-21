@@ -114,6 +114,25 @@ public class ActivityResource {
     }
 
     /**
+     * GET  /participations/:id : get the "id" participation.
+     *
+     * @return the ResponseEntity with status 200 (OK) and with body the participation, or with status 404 (Not Found)
+     */
+    @RequestMapping(value = "/activities/getByEmail",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<List<Activity>> getParticipation() {
+        log.debug("REST request to get Participation by email: {}");
+        List<Activity> activities = activityRepository.findByCoordinatorIsCurrentUser();
+        return Optional.ofNullable(activities)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
      * GET  /activities/:id : get the "id" activity.
      *
      * @return the ResponseEntity with status 200 (OK) and with body the activity, or with status 404 (Not Found)

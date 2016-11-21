@@ -4,9 +4,9 @@
         .module('skynetApp')
         .factory('Participation', Participation);
 
-    Participation.$inject = ['$resource', 'DateUtils'];
+    Participation.$inject = ['$resource', 'DateUtils', '$log'];
 
-    function Participation ($resource, DateUtils) {
+    function Participation ($resource, DateUtils, $log) {
         var resourceUrl =  'api/participations/:id';
 
         return $resource(resourceUrl, {}, {
@@ -32,6 +32,7 @@
                 method: 'POST',
                 transformRequest: function (data) {
                     data.date = DateUtils.convertLocalDateToServer(data.date);
+                    $log.log(data);
                     return angular.toJson(data);
                 }
             }

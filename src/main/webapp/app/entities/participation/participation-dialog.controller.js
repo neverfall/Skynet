@@ -5,13 +5,22 @@
         .module('skynetApp')
         .controller('ParticipationDialogController', ParticipationDialogController);
 
-    ParticipationDialogController.$inject = ['Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Participation', 'Activity', 'User'];
+    ParticipationDialogController.$inject = ['$q','Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Participation', 'Activity', 'User'];
 
-    function ParticipationDialogController (Principal, $timeout, $scope, $stateParams, $uibModalInstance, entity, Participation, Activity, User) {
+    function ParticipationDialogController ($q, Principal, $timeout, $scope, $stateParams, $uibModalInstance, entity, Participation, Activity, User) {
         var vm = this;
         vm.participation = entity;
         vm.activities = Activity.query();
         vm.users = User.query();
+        vm.participationWrapper = {};
+
+        vm.load = function() {
+            Activity.getByEmail(function(result) {
+                vm.myActivities = result;
+            });
+        };
+        vm.load();
+
         vm.currentAccount = null;
 
         Principal.identity().then(function(account) {
@@ -35,10 +44,13 @@
 
         vm.save = function () {
             vm.isSaving = true;
+            vm.participationWrapper.participation = vm.participation;
+            vm.participationWrapper.users = vm.pickedUsers;
+            console.log(vm.participationWrapper);
             if (vm.participation.id !== null) {
-                Participation.update(vm.participation, onSaveSuccess, onSaveError);
+                Participation.update(vm.participationWrapper, onSaveSuccess, onSaveError);
             } else {
-                Participation.save(vm.participation, onSaveSuccess, onSaveError);
+                Participation.save(vm.participationWrapper, onSaveSuccess, onSaveError);
             }
         };
 
