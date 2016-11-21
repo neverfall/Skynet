@@ -20,6 +20,17 @@
                     return data;
                 }
             },
+            'getByEmail': {
+                 url: 'api/activities/getByEmail' ,
+                 method: 'GET',
+                 transformResponse: function (data) {
+                     if (data) {
+                         data = angular.fromJson(data);
+                     }
+                     return data;
+                 },
+                 isArray: true
+             },
             'getScore': {
                  url: 'api/gamification' ,
                  method: 'GET',
