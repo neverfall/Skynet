@@ -101,19 +101,21 @@
         })
         .state('participation.delete', {
             parent: 'participation',
-            url: '/{id}/delete',
+            url: '/?id/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
                     templateUrl: 'app/entities/participation/participation-delete-dialog.html',
+                    templateUrl: 'app/entities/participation/participation-delete-dialog.html',
                     controller: 'ParticipationDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
                         entity: ['Participation', function(Participation) {
-                            return Participation.get({id : $stateParams.id});
+                            console.log($stateParams.id);
+                            return $stateParams.id;
                         }]
                     }
                 }).result.then(function() {
