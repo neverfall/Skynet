@@ -120,12 +120,11 @@ public class ParticipationResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteParticipation(@PathVariable List<Long> ids) {
-        for(Long id: ids) {
-            log.debug("REST request to delete Participation : {}", id);
-            participationRepository.delete(id);
+    public ResponseEntity<Void> deleteParticipation(@PathVariable List<Long> id) {
+        for(Long i: id) {
+            log.debug("REST request to delete Participation : {}", i);
+            participationRepository.delete(i);
         }
         return ResponseEntity.ok().build();
     }
-
 }
