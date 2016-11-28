@@ -118,17 +118,17 @@ public class ParticipationResource {
     /**
      * DELETE  /participations/:id : delete the "id" participation.
      *
-     * @param id the id of the participation to delete
      * @return the ResponseEntity with status 200 (OK)
      */
     @RequestMapping(value = "/participations/{id}",
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteParticipation(@PathVariable Long id) {
-        log.debug("REST request to delete Participation : {}", id);
-        participationRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("participation", id.toString())).build();
+    public ResponseEntity<Void> deleteParticipation(@PathVariable List<Long> id) {
+        for(Long i: id) {
+            log.debug("REST request to delete Participation : {}", i);
+            participationRepository.delete(i);
+        }
+        return ResponseEntity.ok().build();
     }
-
 }
