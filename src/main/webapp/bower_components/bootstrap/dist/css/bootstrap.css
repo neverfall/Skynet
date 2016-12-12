@@ -2549,10 +2549,35 @@ output {
   color: #555;
 }
 
-.checkbox-control{
-  position: static !important;
-  opacity: 1 !important;
+.css-checkbox {
+    /*position: static !important;
+    opacity: 1 !important;*/
+    z-index:-1000 !important;
+    left:-1000px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    height:1px !important;
+    width:1px !important;
+    margin:-1px !important;
+    padding:0 !important;
+    border:0 !important;
+}
 
+.css-checkbox + label.css-label {
+    padding-left:38px !important;
+    height:20px !important;
+    display:inline-block !important;
+    line-height:33px !important;
+    background-repeat:no-repeat !important;
+    background-position: 0 0 !important;
+    font-size:33px !important;
+    vertical-align:middle !important;
+    cursor:pointer !important;
+
+}
+
+.css-checkbox:checked + label.css-label {
+    background-position: 0 -33px !important;
 }
 
 .form-control {
@@ -2562,7 +2587,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #555;
+  color: #9E9E9E;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
@@ -2579,8 +2604,9 @@ output {
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
+
 .form-control::-moz-placeholder {
-  color: #999;
+  color: #9E9E9E;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
@@ -2637,6 +2663,50 @@ input[type="search"] {
     line-height: 46px;
   }
 }
+
+
+input[type=checkbox].css-checkbox {
+    z-index:-1000 !important;
+    left:-1000px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    height:1px !important;
+    width:1px !important;
+    margin:-1px !important;
+    padding:0 !important;
+    border:0 !important;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left:38px;
+    height:33px;
+    display:inline-block;
+    line-height:33px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:33px;
+    vertical-align:middle;
+    cursor:pointer;
+
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -33px;
+}
+label.css-label {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-control{
+  position: static !important;
+  opacity: 1 !important;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -2644,8 +2714,8 @@ input[type="search"] {
 .checkbox {
   position: relative;
   display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 .radio label,
 .checkbox label {

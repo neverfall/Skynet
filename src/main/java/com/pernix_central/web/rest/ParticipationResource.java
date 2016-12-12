@@ -2,6 +2,8 @@ package com.pernix_central.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.pernix_central.domain.Participation;
+import com.pernix_central.domain.ParticipationWrapper;
+import com.pernix_central.domain.User;
 import com.pernix_central.repository.ParticipationRepository;
 import com.pernix_central.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
@@ -26,14 +28,13 @@ import java.util.Optional;
 public class ParticipationResource {
 
     private final Logger log = LoggerFactory.getLogger(ParticipationResource.class);
-        
+
     @Inject
     private ParticipationRepository participationRepository;
-    
+
     /**
      * POST  /participations : Create a new participation.
-     *
-     * @param participation the participation to create
+     * @param participationWrapper an object containing the participation and a list of users that produce that participation
      * @return the ResponseEntity with status 201 (Created) and with body the new participation, or with status 400 (Bad Request) if the participation has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
@@ -41,15 +42,18 @@ public class ParticipationResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Participation> createParticipation(@RequestBody Participation participation) throws URISyntaxException {
-        log.debug("REST request to save Participation : {}", participation);
-        if (participation.getId() != null) {
+    public ResponseEntity createParticipation(@RequestBody ParticipationWrapper participationWrapper) throws URISyntaxException {
+        if (participationWrapper.getParticipation().getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("participation", "idexists", "A new participation cannot already have an ID")).body(null);
         }
-        Participation result = participationRepository.save(participation);
-        return ResponseEntity.created(new URI("/api/participations/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("participation", result.getId().toString()))
-            .body(result);
+        for(User user : participationWrapper.getUsers()) {
+            Participation participationTpm = participationWrapper.getParticipation();
+            participationTpm.setId(null);
+            participationTpm.setUser(user);
+            log.debug("REST request to save Participation : {}", participationTpm);
+            participationRepository.save(participationTpm);
+        }
+        return ResponseEntity.ok().build();
     }
 
     /**
@@ -65,14 +69,14 @@ public class ParticipationResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Participation> updateParticipation(@RequestBody Participation participation) throws URISyntaxException {
-        log.debug("REST request to update Participation : {}", participation);
-        if (participation.getId() == null) {
-            return createParticipation(participation);
+    public ResponseEntity<Participation> updateParticipation(@RequestBody ParticipationWrapper participationWrapper) throws URISyntaxException {
+        log.debug("REST request to update Participation : {}", participationWrapper);
+        if (participationWrapper.getParticipation().getId() == null) {
+            return createParticipation(participationWrapper);
         }
-        Participation result = participationRepository.save(participation);
+        Participation result = participationRepository.save(participationWrapper.getParticipation());
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("participation", participation.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert("participation", participationWrapper.getParticipation().getId().toString()))
             .body(result);
     }
 
@@ -114,17 +118,17 @@ public class ParticipationResource {
     /**
      * DELETE  /participations/:id : delete the "id" participation.
      *
-     * @param id the id of the participation to delete
      * @return the ResponseEntity with status 200 (OK)
      */
     @RequestMapping(value = "/participations/{id}",
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Void> deleteParticipation(@PathVariable Long id) {
-        log.debug("REST request to delete Participation : {}", id);
-        participationRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("participation", id.toString())).build();
+    public ResponseEntity<Void> deleteParticipation(@PathVariable List<Long> id) {
+        for(Long i: id) {
+            log.debug("REST request to delete Participation : {}", i);
+            participationRepository.delete(i);
+        }
+        return ResponseEntity.ok().build();
     }
-
 }

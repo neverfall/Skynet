@@ -2,6 +2,8 @@ package com.pernix_central.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.pernix_central.domain.PersistentToken;
 import com.pernix_central.domain.User;
 import com.pernix_central.repository.PersistentTokenRepository;
@@ -17,6 +19,11 @@ import com.pernix_central.web.rest.util.HeaderUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -82,6 +89,11 @@ public class AccountResource {
                     request.getServerPort() +              // "80"
                     request.getContextPath();              // "/myContextPath" or "" if deployed in root context
 
+                    /*ApplicationContext context =
+                        new ClassPathXmlApplicationContext("EmailConfig.xml");
+                    MailService mailer = (MailService) context.getBean("mailService");
+
+                    mailer.sendActivationEmail(user, baseUrl);*/
                     mailService.sendActivationEmail(user, baseUrl);
                     return new ResponseEntity<>(HttpStatus.CREATED);
                 })

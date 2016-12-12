@@ -5,19 +5,32 @@
         .module('skynetApp')
         .controller('ParticipationDialogController', ParticipationDialogController);
 
-    ParticipationDialogController.$inject = ['Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Participation', 'Activity', 'User'];
+    ParticipationDialogController.$inject = ['$q','Principal','$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Participation', 'Activity', 'User'];
 
-    function ParticipationDialogController (Principal, $timeout, $scope, $stateParams, $uibModalInstance, entity, Participation, Activity, User) {
+    function ParticipationDialogController ($q, Principal, $timeout, $scope, $stateParams, $uibModalInstance, entity, Participation, Activity, User) {
         var vm = this;
         vm.participation = entity;
         vm.activities = Activity.query();
         vm.users = User.query();
-        vm.currentAccount = null;
+        vm.participationWrapper = {};
+        vm.datePickerOpenStatus = {};
+        vm.datePickerOpenStatus.date = false;
 
-        Principal.identity().then(function(account) {
-            vm.currentAccount = account;
-        });
+        vm.load = function(){
+            Principal.identity().then(function(account) {
+                if(account.authorities.indexOf("ROLE_ADMIN")){
+                    Activity.query(function(result) {
+                        vm.myActivities = result;
+                    });
+                }else{
+                    Activity.getByEmail(function(result) {
+                        vm.myActivities = result;
+                    });
+                }
+            });
+        }
 
+        vm.load();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -35,19 +48,19 @@
 
         vm.save = function () {
             vm.isSaving = true;
+            vm.participationWrapper.participation = vm.participation;
+            vm.participationWrapper.users = vm.pickedUsers;
+            console.log(vm.participationWrapper);
             if (vm.participation.id !== null) {
-                Participation.update(vm.participation, onSaveSuccess, onSaveError);
+                Participation.update(vm.participationWrapper, onSaveSuccess, onSaveError);
             } else {
-                Participation.save(vm.participation, onSaveSuccess, onSaveError);
+                Participation.save(vm.participationWrapper, onSaveSuccess, onSaveError);
             }
         };
 
         vm.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
-
-        vm.datePickerOpenStatus = {};
-        vm.datePickerOpenStatus.date = false;
 
         vm.openCalendar = function(date) {
             vm.datePickerOpenStatus[date] = true;

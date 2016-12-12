@@ -9,7 +9,7 @@
 
     function ParticipationDeleteController($uibModalInstance, entity, Participation) {
         var vm = this;
-        vm.participation = entity;
+        vm.participationId = entity;
         vm.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };

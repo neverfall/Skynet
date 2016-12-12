@@ -9,7 +9,7 @@
 
     function stateConfig($stateProvider) {
         $stateProvider.state('gamification', {
-            parent: 'entity',
+            parent: 'app',
             url: '/gamification',
             data: {
                 authorities: []

@@ -11,6 +11,29 @@
                     </span>
                 </button>
             </div>
+            <div class="text-right">
+                <button type="button" class="btn btn-danger btn-sm" ng-model="vm.edit" ng-hide="vm.edit"
+                    uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+                    <span>Edit</span>
+                    <span class="hidden-xs hidden-sm"></span>
+                </button>
+                <form name="editForm" role="form" novalidate ng-submit="vm.deleteSome()">
+                    <button type="submit"
+                        class="btn btn-primary btn-sm"
+                        ng-show="vm.edit">
+                        <span>Cancel</span>
+                            <span class="hidden-xs hidden-sm"></span>
+                    </button>
+                    <button type="submit"
+                            ui-sref="participation.delete({id: vm.checkboxIds})"
+                            class="btn btn-danger btn-sm"
+                            ng-show="vm.edit"
+                            ng-disabled="vm.disableDeleteButton">
+                        <span>Delete</span>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
     <br/>
@@ -35,7 +58,7 @@
                     <td>
                         {{participation.user.firstName}}
                     </td>
-                    <td class="text-right">
+                    <td class="text-right" style="width: 30%;">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
                                     ui-sref="participation-detail({id:participation.id})"
@@ -55,6 +78,12 @@
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm"></span>
                             </button>
+                            <div class="checkbox" ng-show="vm.edit">
+                                <input type="checkbox" name="checkbox{{$index}}" id="checkbox{{$index}}" class="css-checkbox"
+                                       ng-model="vm.checkboxes[$index]"
+                                       ng-change="vm.addId(participation.id)"/>
+                                <label for="checkbox{{$index}}" class="css-label"></label>
+                            </div>
                         </div>
                     </td>
                 </tr>
