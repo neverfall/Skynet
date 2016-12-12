@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="pruebacenecoop@gmail.com" />
+        <property name="password" value="ECCIcenecoop2015" />
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="messageSource"
+          class="org.springframework.context.MessageSourceImpl">
+    </bean>
+
+    <bean id="templateEngine"
+          class="org.thymeleaf.spring4.SpringTemplateEngineImpl">
+    </bean>
+
+    <bean id="mailService" class="com.pernix_central.service.MailService">
+        <property name="mailSender" ref="mailSender" />
+        <property name="messageSource" ref="messageSource" />
+        <property name="templateEngine" ref="templateEngine" />
+    </bean>
+
+</beans>

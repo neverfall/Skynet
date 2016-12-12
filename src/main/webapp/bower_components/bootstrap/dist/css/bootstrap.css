@@ -2702,7 +2702,10 @@ label.css-label {
     user-select: none;
 }
 
-
+.checkbox-control{
+  position: static !important;
+  opacity: 1 !important;
+}
 
 .form-group {
   margin-bottom: 15px;

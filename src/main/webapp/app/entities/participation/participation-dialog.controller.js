@@ -13,20 +13,24 @@
         vm.activities = Activity.query();
         vm.users = User.query();
         vm.participationWrapper = {};
+        vm.datePickerOpenStatus = {};
+        vm.datePickerOpenStatus.date = false;
 
-        vm.load = function() {
-            Activity.getByEmail(function(result) {
-                vm.myActivities = result;
+        vm.load = function(){
+            Principal.identity().then(function(account) {
+                if(account.authorities.indexOf("ROLE_ADMIN")){
+                    Activity.query(function(result) {
+                        vm.myActivities = result;
+                    });
+                }else{
+                    Activity.getByEmail(function(result) {
+                        vm.myActivities = result;
+                    });
+                }
             });
-        };
+        }
+
         vm.load();
-
-        vm.currentAccount = null;
-
-        Principal.identity().then(function(account) {
-            vm.currentAccount = account;
-        });
-
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -57,9 +61,6 @@
         vm.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
-
-        vm.datePickerOpenStatus = {};
-        vm.datePickerOpenStatus.date = false;
 
         vm.openCalendar = function(date) {
             vm.datePickerOpenStatus[date] = true;

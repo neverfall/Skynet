@@ -10,6 +10,7 @@
     function ParticipationController ($scope, $state, User, Participation) {
         var vm = this;
         vm.edit = 0;
+        vm.disableDeleteButton = 1;
         vm.checkboxes = [];
         vm.checkboxIds = [];
         vm.participations = [];
@@ -23,7 +24,11 @@
             } else {
                 vm.checkboxIds.splice(index,1);
             }
-            console.log(vm.checkboxIds);
+            if(vm.checkboxIds.length == 0){
+                vm.disableDeleteButton = 1;
+            }else{
+                vm.disableDeleteButton = 0;
+            }
         }
         vm.loadAll = function() {
             Participation.query(function(result) {

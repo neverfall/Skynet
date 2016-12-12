@@ -27,7 +27,8 @@
                     <button type="submit"
                             ui-sref="participation.delete({id: vm.checkboxIds})"
                             class="btn btn-danger btn-sm"
-                            ng-show="vm.edit">
+                            ng-show="vm.edit"
+                            ng-disabled="vm.disableDeleteButton">
                         <span>Delete</span>
                         <span class="hidden-xs hidden-sm"></span>
                     </button>

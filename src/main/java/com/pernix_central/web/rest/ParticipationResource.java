@@ -34,7 +34,7 @@ public class ParticipationResource {
 
     /**
      * POST  /participations : Create a new participation.
-     *
+     * @param participationWrapper an object containing the participation and a list of users that produce that participation
      * @return the ResponseEntity with status 201 (Created) and with body the new participation, or with status 400 (Bad Request) if the participation has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
@@ -69,14 +69,14 @@ public class ParticipationResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<Participation> updateParticipation(@RequestBody Participation participation) throws URISyntaxException {
-        log.debug("REST request to update Participation : {}", participation);
-        if (participation.getId() == null) {
-            //return createParticipation(participation);
+    public ResponseEntity<Participation> updateParticipation(@RequestBody ParticipationWrapper participationWrapper) throws URISyntaxException {
+        log.debug("REST request to update Participation : {}", participationWrapper);
+        if (participationWrapper.getParticipation().getId() == null) {
+            return createParticipation(participationWrapper);
         }
-        Participation result = participationRepository.save(participation);
+        Participation result = participationRepository.save(participationWrapper.getParticipation());
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("participation", participation.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert("participation", participationWrapper.getParticipation().getId().toString()))
             .body(result);
     }
 
